@@ -76,7 +76,7 @@ export class Tracer {
      * @param {SpanOptions} [options] - options for the newly created span.
      * @return {Span} - a new Span object.
      */
-    startSpan(name: string, options: SpanOptions = {}): Span {
+    startSpan(name: string, options: SpanOptions = {}, outerContext: any): Span {
 
         // Convert options.childOf to fields.references as needed.
         if (options.childOf) {
@@ -89,7 +89,7 @@ export class Tracer {
             }
             delete(options.childOf);
         }
-        return this._startSpan(name, options);
+        return this._startSpan(name, options, outerContext);
     }
 
     /**
@@ -165,7 +165,7 @@ export class Tracer {
     // signature.
     //
     // The default behavior returns a no-op span.
-    protected _startSpan(name: string, fields: SpanOptions): Span {
+    protected _startSpan(name: string, fields: SpanOptions, outerContext: any): Span {
         return Noop.span!;
     }
 

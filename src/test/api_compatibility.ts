@@ -23,15 +23,15 @@ function apiCompatibilityChecks(createTracer = () => new Tracer(), options: ApiC
 
         beforeEach(() => {
             tracer = createTracer();
-            span = tracer.startSpan('test-span');
+            span = tracer.startSpan('test-span', {}, '');
         });
 
         describe('Tracer', () => {
 
             describe('startSpan', () => {
                 it('should handle Spans and SpanContexts', () => {
-                    expect(() => { tracer.startSpan('child', { childOf : span }); }).to.not.throw(Error);
-                    expect(() => { tracer.startSpan('child', { childOf : span.context() }); }).to.not.throw(Error);
+                    expect(() => { tracer.startSpan('child', { childOf : span }, ''); }).to.not.throw(Error);
+                    expect(() => { tracer.startSpan('child', { childOf : span.context() }, ''); }).to.not.throw(Error);
                 });
             });
 
@@ -74,7 +74,7 @@ function apiCompatibilityChecks(createTracer = () => new Tracer(), options: ApiC
 
             describe('finish', () => {
                 it('should not throw exceptions on valid arguments', () => {
-                    span = tracer.startSpan('test-span');
+                    span = tracer.startSpan('test-span', {}, '');
                     expect(() => span.finish(Date.now())).to.not.throw(Error);
                 });
             });
@@ -90,7 +90,7 @@ function apiCompatibilityChecks(createTracer = () => new Tracer(), options: ApiC
         describe('SpanContext', () => {
             describe('toTraceId', () => {
                 it('should return a string', () => {
-                    span = tracer.startSpan('test-span');
+                    span = tracer.startSpan('test-span', {}, '');
                     console.log(span.context().toTraceId());
                     expect(() => span.context().toTraceId()).to.not.throw(Error);
                     expect(span.context().toTraceId()).to.be.a('string');
@@ -99,7 +99,7 @@ function apiCompatibilityChecks(createTracer = () => new Tracer(), options: ApiC
 
             describe('toSpanId', () => {
                 it('should return a string', () => {
-                    span = tracer.startSpan('test-span');
+                    span = tracer.startSpan('test-span', {}, '');
                     expect(() => span.context().toSpanId()).to.not.throw(Error);
                     expect(span.context().toSpanId()).to.be.a('string');
                 });

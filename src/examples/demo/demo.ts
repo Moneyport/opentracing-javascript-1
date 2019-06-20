@@ -7,14 +7,14 @@ console.log('\nRunning demo...\n');
 const tracer = new MockTracer();
 
 console.log('Starting parent.');
-const parent = tracer.startSpan('parent_span');
+const parent = tracer.startSpan('parent_span', {}, '');
 parent.setTag('custom', 'tag value');
 parent.setTag('alpha', '1000');
 
 console.log('Waiting to start child...');
 setTimeout(() => {
     console.log('Starting child span.');
-    const child = tracer.startSpan('child_span', { childOf: parent });
+    const child = tracer.startSpan('child_span', { childOf: parent }, '');
     child.setTag('alpha', '200');
     child.setTag('beta', '50');
     child.log({state: 'waiting'});

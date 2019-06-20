@@ -10,7 +10,7 @@ function mockTracerimplementationTests(): void {
 
             it ('should not throw exceptions when running report', () => {
                 const tracer = new MockTracer();
-                const span = tracer.startSpan('test_operation');
+                const span = tracer.startSpan('test_operation', {}, '');
                 span.addTags ({key: 'value'});
                 span.finish ();
                 expect (() => {

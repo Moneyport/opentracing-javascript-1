@@ -8,7 +8,7 @@ export function opentracingAPITests(): void {
         let span: opentracing.Span;
         beforeEach(() => {
             tracer = new opentracing.Tracer();
-            span = tracer.startSpan('test-span');
+            span = tracer.startSpan('test-span', {}, '');
         });
 
         describe('Constants', () => {
@@ -49,7 +49,7 @@ export function opentracingAPITests(): void {
                 it('should use the global tracer', () => {
                     opentracing.initGlobalTracer(new TestTracer());
                     const tracer = opentracing.globalTracer();
-                    const span = tracer.startSpan('test');
+                    const span = tracer.startSpan('test', {}, '');
                     expect(span).to.equal(dummySpan);
                 });
 

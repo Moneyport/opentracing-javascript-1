@@ -9,7 +9,7 @@ export function noopImplementationTests(createTracer = () => new Tracer()): void
 
             it('should handle Spans and SpanContexts', () => {
                 const tracer = createTracer();
-                const span = tracer.startSpan('test_operation');
+                const span = tracer.startSpan('test_operation', {}, '');
                 const textCarrier = {};
                 expect(() => { tracer.inject(span, FORMAT_TEXT_MAP, textCarrier); }).to.not.throw(Error);
             });
@@ -18,7 +18,7 @@ export function noopImplementationTests(createTracer = () => new Tracer()): void
         describe('Span#finish', () => {
             it('should return undefined', () => {
                 const tracer = createTracer();
-                const span = tracer.startSpan('test_span');
+                const span = tracer.startSpan('test_span', {}, '');
                 expect(span.finish()).to.be.undefined;
             });
         });
