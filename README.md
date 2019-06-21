@@ -14,6 +14,7 @@ To fully understand this platform API, it's helpful to be familiar with the [Ope
 
 Install the package using `npm`:
 
+
 ```bash
 npm install --save opentracing
 ```
