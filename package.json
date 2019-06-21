@@ -1,5 +1,5 @@
 {
-  "name": "@mojaloop/opentracing",
+  "name": "@mojaloop",
   "version": "6.4.0-snapshot",
   "engines": {
     "node": ">=0.10"
@@ -35,7 +35,9 @@
     "type": "git",
     "url": "https://github.com/opentracing/opentracing-javascript"
   },
-  "dependencies": {},
+  "dependencies": {
+    "typescript": "^3.5.2"
+  },
   "devDependencies": {
     "@types/chai": "4.1.4",
     "@types/mocha": "2.2.40",
@@ -54,7 +56,6 @@
     "ts-loader": "^4.4.1",
     "tslint": "^5.0.0",
     "typedoc": "^0.11.1",
-    "typescript": "^3.2.2",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   }
